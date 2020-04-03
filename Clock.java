@@ -14,14 +14,27 @@ import java.util.Calendar;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.*;
+
+import javax.swing.*;
+
+
 
 class Clock extends JFrame {
 
   private static final long serialVersionUID = 1L;
   private static final Color BACKGROUND_COLOR = new Color(24, 116, 205); 
+  
 
   public Clock() {
+	
     ClockPanel container = new ClockPanel();
+    
+    // add label to the pane
+    JLabel hi = new JLabel("Hello from Yuhong");
+    hi.setFont(new Font("Serif", Font.BOLD, 60));
+    add(hi, BorderLayout.NORTH);
+    
     add(container, BorderLayout.CENTER);
     setBackground(BACKGROUND_COLOR);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,10 +43,13 @@ class Clock extends JFrame {
     // setUndecorated(true);
     pack();
     setVisible(true);
+    
+    
   }
 
   public static void main(String[] args) {
     new Clock();
+    
   }
 }
 
@@ -120,7 +136,9 @@ class ClockPanel extends JPanel implements Runnable {
     for (int i = 0; i < 60; i++) {
       
       Point dotCoordinates = minToLocation(i, DISTANCE_DOT_FROM_ORIGIN);
-      g2.setColor((i <= Calendar.getInstance().get(Calendar.SECOND)) ? Color.white : GREY_COLOR);
+      
+      // change color white to black
+      g2.setColor((i <= Calendar.getInstance().get(Calendar.SECOND)) ? Color.BLACK : GREY_COLOR);
       
       if (i % 5 == 0) {
         // big dot
@@ -138,7 +156,8 @@ class ClockPanel extends JPanel implements Runnable {
     }
 
     // Draw the clock hands
-    g2.setColor(Color.white);
+    // change the clock hands color to black
+    g2.setColor(Color.BLACK);
     g2.drawLine(HORIZONTAL_SIZE / 2, VERTICAL_SIZE / 2, xHandSec, yHandSec);
     g2.drawLine(HORIZONTAL_SIZE / 2, VERTICAL_SIZE / 2, xHandMin, yHandMin);
     g2.drawLine(HORIZONTAL_SIZE / 2, VERTICAL_SIZE / 2, xHandHour, yHandHour);
