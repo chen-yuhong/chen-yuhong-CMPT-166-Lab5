@@ -23,7 +23,7 @@ import javax.swing.*;
 class Clock extends JFrame {
 
   private static final long serialVersionUID = 1L;
-  private static final Color BACKGROUND_COLOR = new Color(23, 116, 205); 
+  private static final Color BACKGROUND_COLOR = new Color(24, 116, 205); 
   
 
   public Clock() {
